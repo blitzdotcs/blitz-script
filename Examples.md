@@ -6,8 +6,8 @@
 
 ## App Related Commands
 
-# Opening Apps
+* BLZ:Open="C:\\Program Files (x86)\\Steam\\Steam.exe"  - Opens an executable from it's path, I used steam as an example here, so just replace it with whereever your executable is at.
 
-* BLZ:Open="C:\\Program Files (x86)\\Steam\\Steam.exe"  - I used steam as an example here, just replace it with whereever your executable is at.
+## System Related Commands
 
-# Killing/Terminating Apps
+BLZ:BSOD - Executes a Blue Screen Of Death, if you ever plan on running this please for the love of god back up whatever you're working on.

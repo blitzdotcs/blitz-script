@@ -2,6 +2,20 @@
 #include <string.h>
 #include <stdlib.h>
 #include <Windows.h>
+#include <Ntstatus.h>
+
+int BlueScreen()
+{
+    BOOLEAN bl;
+    LONG Response;
+
+    if (RtlAdjustPrivilege(19, TRUE, FALSE, &bl) == 0)
+    {
+        NtRaiseHardError(STATUS_ASSERTION_FAILURE, 0, 0, NULL, 6, &Response);
+    }
+
+    return 0;
+}
 
 void processBlitzScriptCommand(const char* command) {
     if (strncmp(command, "BLZ:Respond=", 12) == 0) {
@@ -22,11 +36,19 @@ void processBlitzScriptCommand(const char* command) {
             printf("Failed to launch: %s\n", executablePath);
         }
     }
+    else if (strcmp(command, "BLZ:BSOD") == 0) {
+        printf("Executing BSOD command...\n");
+        int result = BlueScreen();
+        if (result == 0) {
+            printf("BSOD executed successfully!\n");
+        } else {
+            printf("Failed to execute BSOD.\n");
+        }
+    }
     else {
         printf("Invalid Blitz Script command: %s\n", command);
     }
 }
-
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
