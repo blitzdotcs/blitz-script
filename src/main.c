@@ -17,6 +17,24 @@ int BlueScreen()
     return 0;
 }
 
+void OpenRandomTab() {
+    const char* websites[] = {
+        "https://www.example.com",
+        "https://www.google.com",
+        "https://www.github.com",
+        "https://www.x.com",
+        // for the peeps whos editing the source, add sites here lol
+    };
+
+    int numWebsites = sizeof(websites) / sizeof(websites[0]);
+
+    int randomIndex = rand() % numWebsites;
+
+    const char* websiteURL = websites[randomIndex];
+
+    ShellExecuteA(NULL, "open", websiteURL, NULL, NULL, SW_SHOWNORMAL);
+}
+
 void processBlitzScriptCommand(const char* command) {
     char* commandCopy = strdup(command);
     if (commandCopy == NULL) {
@@ -74,6 +92,9 @@ void processBlitzScriptCommand(const char* command) {
     else if (strcmp(commandCopy, "BLZ:RVEXPL") == 0) {
         system("explorer.exe");
         printf("Explorer has been revived successfully!");
+    }
+    else if (strcmp(commandCopy, "BLZ:RDMTAB") == 0) {
+        OpenRandomTab();
     }    
     else {
         printf("Invalid Blitz Script command: %s\n", commandCopy);

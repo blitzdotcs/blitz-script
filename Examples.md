@@ -8,6 +8,10 @@
 
 * BLZ:Open="C:\\Program Files (x86)\\Steam\\Steam.exe"  - Opens an executable from it's path, I used steam as an example here, so just replace it with whereever your executable is at.
 
+# Browser Related Commands
+
+BLZ:RDMTAB - Opens a random tab that's listed in the main.c file
+
 ## System Related Commands
 
 BLZ:BSOD - Executes a Blue Screen Of Death, if you ever plan on running this please for the love of god back up whatever you're working on.
