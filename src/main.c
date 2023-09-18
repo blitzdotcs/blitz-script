@@ -52,7 +52,27 @@ void processBlitzScriptCommand(const char* command) {
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
-        printf("Usage: %s <input_file.btz>\n", argv[0]);
+        printf("Yo! Make sure to drag and drop a .btz file for this to actually work! - Blitz", argv[0]);
+        getchar();
+        return 1;
+    }
+
+    const char* inputFile = argv[1];
+    const char* fileExtension = strrchr(inputFile, '.');
+
+    if (fileExtension == NULL) {
+        printf("Woah man, this isn't a blitz script file, make sure it's properly formatted - Blitz\n");
+        getchar();
+        return 1;
+    }
+    
+    if (strcmp(fileExtension, ".btz") != 0) {
+        if (strcmp(fileExtension, ".1340") == 0) {
+            printf("Abdu stop tryna run your own file lol - Blitz\n");
+        } else {
+            printf("Woah man, this isn't a blitz script file, make sure it's properly formatted - Blitz\n");
+        }
+        getchar();
         return 1;
     }
 
@@ -64,10 +84,11 @@ int main(int argc, char* argv[]) {
     mode &= ~(ENABLE_QUICK_EDIT_MODE | ENABLE_EXTENDED_FLAGS);
     SetConsoleMode(hInput, mode);
 
-    FILE* file = fopen(argv[1], "r");
+    FILE* file = fopen(inputFile, "r");
 
     if (file == NULL) {
         perror("Failed to open file");
+        getchar();
         return 1;
     }
 
