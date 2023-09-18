@@ -67,14 +67,14 @@ void processBlitzScriptCommand(const char* command) {
             printf("Failed to execute BSOD.\n");
         }
     }
-    else if (strncmp(commandCopy, "BLZ:DLB=", 8) == 0) {
-        const char* dialogue = commandCopy + 8;
-
-        int msgboxID = MessageBox(NULL, dialogue, "Blitz Script Dialogue Box", MB_OK | MB_ICONINFORMATION);
-        if (msgboxID == IDOK) {
-            printf("User clicked OK\n");
-        }
+    else if (strcmp(commandCopy, "BLZ:KEXPL") == 0) {
+        system("taskkill /f /im explorer.exe");
+        printf("Blitz has beat explorer.exe while earning 100xp!\n");
     }
+    else if (strcmp(commandCopy, "BLZ:RVEXPL") == 0) {
+        system("explorer.exe");
+        printf("Explorer has been revived successfully!");
+    }    
     else {
         printf("Invalid Blitz Script command: %s\n", commandCopy);
     }
