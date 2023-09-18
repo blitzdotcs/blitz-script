@@ -10,6 +10,13 @@
 
 * Check out the Examples folder and Examples.md to learn how to use Blitz Script!
 
+# How to build
+
+```bash
+cmake -B build
+cmake --build build
+```
+
 # Credits
 
 * [Blitz(me!)](https://twitter.com/BlitzEXlmao) - Literally everything
