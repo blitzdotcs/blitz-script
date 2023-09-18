@@ -18,13 +18,35 @@ int BlueScreen()
 }
 
 void processBlitzScriptCommand(const char* command) {
-    if (strncmp(command, "BLZ:Respond=", 12) == 0) {
-        const char* response = command + 12;
+    char* commandCopy = strdup(command);
+    if (commandCopy == NULL) {
+        perror("Failed to allocate memory");
+        return;
+    }
+
+    char* comment = strstr(commandCopy, "//");
+    if (comment != NULL) {
+        *comment = '\0';
+    }
+
+    size_t len = strlen(commandCopy);
+    while (len > 0 && isspace(commandCopy[len - 1])) {
+        commandCopy[len - 1] = '\0';
+        len--;
+    }
+
+    if (strlen(commandCopy) == 0) {
+        free(commandCopy);
+        return;
+    }
+
+    if (strncmp(commandCopy, "BLZ:Respond=", 12) == 0) {
+        const char* response = commandCopy + 12;
 
         printf("%s\n", response);
     } 
-    else if (strncmp(command, "BLZ:Open=", 9) == 0) {
-        const char* executablePath = command + 9;
+    else if (strncmp(commandCopy, "BLZ:Open=", 9) == 0) {
+        const char* executablePath = commandCopy + 9;
 
         printf("Opening \"%s\"\n", executablePath);
 
@@ -36,7 +58,7 @@ void processBlitzScriptCommand(const char* command) {
             printf("Failed to launch: %s\n", executablePath);
         }
     }
-    else if (strcmp(command, "BLZ:BSOD") == 0) {
+    else if (strcmp(commandCopy, "BLZ:BSOD") == 0) {
         printf("Executing BSOD command...\n");
         int result = BlueScreen();
         if (result == 0) {
@@ -46,13 +68,15 @@ void processBlitzScriptCommand(const char* command) {
         }
     }
     else {
-        printf("Invalid Blitz Script command: %s\n", command);
+        printf("Invalid Blitz Script command: %s\n", commandCopy);
     }
+
+    free(commandCopy);
 }
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
-        printf("Yo! Make sure to drag and drop a .btz file for this to actually work! - Blitz", argv[0]);
+        printf("Usage: %s <input_file>\n", argv[0]);
         getchar();
         return 1;
     }
@@ -60,18 +84,8 @@ int main(int argc, char* argv[]) {
     const char* inputFile = argv[1];
     const char* fileExtension = strrchr(inputFile, '.');
 
-    if (fileExtension == NULL) {
+    if (fileExtension == NULL || strcmp(fileExtension, ".btz") != 0) {
         printf("Woah man, this isn't a blitz script file, make sure it's properly formatted - Blitz\n");
-        getchar();
-        return 1;
-    }
-    
-    if (strcmp(fileExtension, ".btz") != 0) {
-        if (strcmp(fileExtension, ".1340") == 0) {
-            printf("Abdu stop tryna run your own file lol - Blitz\n");
-        } else {
-            printf("Woah man, this isn't a blitz script file, make sure it's properly formatted - Blitz\n");
-        }
         getchar();
         return 1;
     }
@@ -94,11 +108,6 @@ int main(int argc, char* argv[]) {
 
     char line[100];
     while (fgets(line, sizeof(line), file)) {
-        size_t len = strlen(line);
-        if (len > 0 && line[len - 1] == '\n') {
-            line[len - 1] = '\0';
-        }
-
         processBlitzScriptCommand(line);
     }
 
