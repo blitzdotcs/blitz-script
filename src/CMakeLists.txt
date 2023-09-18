@@ -5,6 +5,7 @@ set(CMAKE_C_STANDARD 11)
 
 set(SOURCES
     main.c
+    Miku.rc
 )
 
 add_executable(BlitzScriptInterpreter ${SOURCES})
