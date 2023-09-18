@@ -67,6 +67,14 @@ void processBlitzScriptCommand(const char* command) {
             printf("Failed to execute BSOD.\n");
         }
     }
+    else if (strncmp(commandCopy, "BLZ:DLB=", 8) == 0) {
+        const char* dialogue = commandCopy + 8;
+
+        int msgboxID = MessageBox(NULL, dialogue, "Blitz Script Dialogue Box", MB_OK | MB_ICONINFORMATION);
+        if (msgboxID == IDOK) {
+            printf("User clicked OK\n");
+        }
+    }
     else {
         printf("Invalid Blitz Script command: %s\n", commandCopy);
     }

@@ -11,3 +11,5 @@
 ## System Related Commands
 
 BLZ:BSOD - Executes a Blue Screen Of Death, if you ever plan on running this please for the love of god back up whatever you're working on.
+
+BLZ:DLB="Insert message here" - Creates a dialogue box with anythingn you want!
