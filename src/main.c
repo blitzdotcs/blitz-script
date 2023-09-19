@@ -58,12 +58,12 @@ void processBlitzScriptCommand(const char* command) {
         return;
     }
 
-    if (strncmp(commandCopy, "BLZ:Respond=", 12) == 0) {
+    if (strncmp(commandCopy, "BTZ:Respond=", 12) == 0) {
         const char* response = commandCopy + 12;
 
         printf("%s\n", response);
     } 
-    else if (strncmp(commandCopy, "BLZ:Open=", 9) == 0) {
+    else if (strncmp(commandCopy, "BTZ:Open=", 9) == 0) {
         const char* executablePath = commandCopy + 9;
 
         printf("Opening \"%s\"\n", executablePath);
@@ -76,7 +76,7 @@ void processBlitzScriptCommand(const char* command) {
             printf("Failed to launch: %s\n", executablePath);
         }
     }
-    else if (strcmp(commandCopy, "BLZ:BSOD") == 0) {
+    else if (strcmp(commandCopy, "BTZ:BSOD") == 0) {
         printf("Executing BSOD command...\n");
         int result = BlueScreen();
         if (result == 0) {
@@ -85,16 +85,24 @@ void processBlitzScriptCommand(const char* command) {
             printf("Failed to execute BSOD.\n");
         }
     }
-    else if (strcmp(commandCopy, "BLZ:KEXPL") == 0) {
+    else if (strcmp(commandCopy, "BTZ:KEXPL") == 0) {
         system("taskkill /f /im explorer.exe");
         printf("Blitz has beat explorer.exe while earning 100xp!\n");
     }
-    else if (strcmp(commandCopy, "BLZ:RVEXPL") == 0) {
+    else if (strcmp(commandCopy, "BTZ:RVEXPL") == 0) {
         system("explorer.exe");
         printf("Explorer has been revived successfully!");
     }
-    else if (strcmp(commandCopy, "BLZ:RDMTAB") == 0) {
+    else if (strcmp(commandCopy, "BTZ:RDMTAB") == 0) {
         OpenRandomTab();
+    }
+    else if (strncmp(commandCopy, "BLZ:DLB=", 8) == 0) {
+        const char* dialogue = commandCopy + 8;
+
+        int msgboxID = MessageBox(NULL, dialogue, "Blitz Script Dialogue Box", MB_OK | MB_ICONINFORMATION);
+        if (msgboxID == IDOK) {
+            printf("User clicked OK\n");
+        }
     }    
     else {
         printf("Invalid Blitz Script command: %s\n", commandCopy);
