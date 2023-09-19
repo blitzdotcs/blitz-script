@@ -19,10 +19,7 @@ int BlueScreen()
 
 void OpenRandomTab() {
     const char* websites[] = {
-        "https://www.example.com",
-        "https://www.google.com",
-        "https://www.github.com",
-        "https://www.x.com",
+        "https://twitter.com/BlitzEXlmao",
         // for the peeps whos editing the source, add sites here lol
     };
 
@@ -96,13 +93,10 @@ void processBlitzScriptCommand(const char* command) {
     else if (strcmp(commandCopy, "BTZ:RDMTAB") == 0) {
         OpenRandomTab();
     }
-    else if (strncmp(commandCopy, "BLZ:DLB=", 8) == 0) {
+    else if (strncmp(commandCopy, "BTZ:DLB=", 8) == 0) {
         const char* dialogue = commandCopy + 8;
 
         int msgboxID = MessageBox(NULL, dialogue, "Blitz Script Dialogue Box", MB_OK | MB_ICONINFORMATION);
-        if (msgboxID == IDOK) {
-            printf("User clicked OK\n");
-        }
     }    
     else {
         printf("Invalid Blitz Script command: %s\n", commandCopy);

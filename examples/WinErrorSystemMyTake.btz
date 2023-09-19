@@ -1,20 +1,21 @@
 // This shit WILL give you a bsod.
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
-BTZ:DLB=You're fucked
+// Update: Removed bsod function cuz I'm tired of getting it while I'm testing it
 BTZ:KEXPL
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
+BTZ:DLB=You're fucked
 BTZ:DLB=You're fucked
 BTZ:DLB=You're fucked
 BTZ:DLB=You're fucked
@@ -105,4 +106,4 @@ BTZ:DLB=You're fucked
 BTZ:DLB=You're fucked
 BTZ:DLB=You're fucked
 BTZ:DLB=You're fucked
-BTZ:BSOD
+// BTZ:BSOD
