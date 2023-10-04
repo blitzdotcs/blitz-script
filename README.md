@@ -2,9 +2,9 @@
 
 * A work in progress script interpreter made by me :D
 
-* This is still a heavy w.i.p. so expect bugs and stuff (I'm learning C while making this lol)
+* This is still a w.i.p. so expect bugs and stuff (I'm learning C/C++ while making this lol)
 
-* This is windows only btw, sorry mac and linux users :P
+* Some commands are restricted to windows oonly (I'll prob try add a device detection thingy)
 
 * Feel free to suggest stuff to add
 
