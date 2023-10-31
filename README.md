@@ -20,6 +20,6 @@ cmake --build build
 
 # Credits
 
-* [Blitz(me!)](https://twitter.com/BlitzEXlmao) - Literally everything
+* [Blitz(me!)](https://twitter.com/blitzdotcs) - Literally everything
 
 * [AD1340](https://www.youtube.com/channel/UCoGneWevTjYi-ekcU9FCW_Q) - Beta Tester
