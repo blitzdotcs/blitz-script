@@ -4,7 +4,7 @@
 
 * This is still a w.i.p. so expect bugs and stuff (I'm learning C/C++ while making this lol)
 
-* Some commands are restricted to windows oonly (I'll prob try add a device detection thingy)
+* Some commands are restricted to windows only (I'll prob try add a device detection thingy)
 
 * Feel free to suggest stuff to add
 
